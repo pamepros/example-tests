@@ -1,0 +1,18 @@
+{
+    "name": "pamepros/example-tests",
+    "authors": [
+        {
+            "name": "pamepros",
+            "email": "pamepros@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/appium/php-client"
+        }
+    ],
+    "require": {
+        "appium/php-client": "dev-master"
+    }
+}
