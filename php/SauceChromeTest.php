@@ -5,7 +5,7 @@
 
 require_once "vendor/autoload.php";
 
-class SauceTest extends Sauce\Sausage\WebDriverTestCase
+class SauceTest extends PHPUnit_Extensions_AppiumTestCase
 {
     protected $numValues = array();
 
