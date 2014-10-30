@@ -5,20 +5,19 @@
 
 require_once "vendor/autoload.php";
 
-class SauceTest extends Sauce\Sausage\WebDriverTestCase
+class AndroidChromeTest extends PHPUnit_Extensions_AppiumTestCase
 {
     protected $numValues = array();
 
     public static $browsers = array(
         array(
-            'name' => 'Test PHP on real device',
             'browserName' => 'Chrome',
-            'seleniumServerRequestsTimeout' => 240,
+            'local' => true,
+            'port' => 4723,
             'desiredCapabilities' => array(
                 'platformName' => 'Android',
-                'deviceName' => 'Samsung Galaxy S4 Device',
-                'appium-version'=> '1.2.2',
-                'platformVersion' => '4.4'
+                'platformVersion' => '4.4',
+                'deviceName' => 'Android'
             )
         )
     );
@@ -26,11 +25,11 @@ class SauceTest extends Sauce\Sausage\WebDriverTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->start_url = 'http://google.com';
     }
 
     public function testTitle()
     {
+        $this->get('http://google.com');
         $this->assertContains("Google", $this->title());
     }
 }
