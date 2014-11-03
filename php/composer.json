@@ -6,14 +6,7 @@
             "email": "pamepros@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/appium/php-client"
-        }
-    ],
     "require": {
-        "sauce/sausage": ">=0.15.2",
-        "appium/php-client": "dev-master"
+        "sauce/sausage": ">=0.15.2"
     }
 }

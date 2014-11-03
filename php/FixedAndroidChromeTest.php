@@ -10,7 +10,7 @@ class AndroidChromeTest extends Sauce\Sausage\MobileTestCase
     public static $browsers = array(
         // run Chrome locally on phone
         array(
-            'browserName' => 'Chrome',
+            'browserName' => 'Browser',
             'local' => true,
             'port' => 4723,
             'desiredCapabilities' => array(
@@ -36,29 +36,33 @@ class AndroidChromeTest extends Sauce\Sausage\MobileTestCase
         return $this->elements($this->using('id')->value($tag));
     }
 
-    public function testSauce()
+    public function setUpPage()
     {
         $this->url('http://google.com');
+    }
 
+    public function tearDown()
+    {
+        $this->stop();
+    }
+
+    public function googleSearch($search_str)
+    {
         $q = $this->elemsByName('q');
-        $q[0]->value('Sauce Labs');
-        
+        $q[0]->value($search_str);
         $buttons = $this->elemsByTag('button');
         $buttons[0]->click();
-        
+    }
+
+    public function testSauce()
+    {
+        $this->googleSearch('Sauce Labs'); 
         $this->assertTextPresent('saucelabs.com');
     }
     
     public function testSauceInTitle()
     {
-        $this->url('http://google.com');
-
-        $q = $this->elemsByName('q');
-        $q[0]->value('Sauce Labs');
-        
-        $buttons = $this->elemsByTag('button');
-        $buttons[0]->click();
-        
+        $this->googleSearch('Sauce Labs'); 
         $this->assertContains("Sauce", $this->title());
     }
 }
