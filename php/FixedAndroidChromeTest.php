@@ -10,7 +10,7 @@ class AndroidChromeTest extends Sauce\Sausage\MobileTestCase
     public static $browsers = array(
         // run Chrome locally on phone
         array(
-            'browserName' => 'Browser',
+            'browserName' => 'Chrome',
             'local' => true,
             'port' => 4723,
             'desiredCapabilities' => array(
