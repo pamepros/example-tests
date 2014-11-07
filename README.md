@@ -11,4 +11,5 @@ Installation:
 // Remember to install composer inside the php/ folder in order to have the
 vendor/ folder in there
 
-* Run ```./test.sh <test-to-run>.php```
+* Run
+```vendor/bin/phpunit <test-to-run>.php``` or just ```./test.sh <test-to-run>.php```
