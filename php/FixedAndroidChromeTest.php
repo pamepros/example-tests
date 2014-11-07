@@ -21,24 +21,10 @@ class AndroidChromeTest extends Sauce\Sausage\MobileTestCase
         )
     );
 
-    public function elemsByTag($tag)
+    public function setUp()
     {
-        return $this->elements($this->using('tag name')->value($tag));
-    }
-    
-    public function elemsByName($tag)
-    {
-        return $this->elements($this->using('name')->value($tag));
-    }
-    
-    public function elemsById($tag)
-    {
-        return $this->elements($this->using('id')->value($tag));
-    }
-
-    public function setUpPage()
-    {
-        $this->url('http://google.com');
+        parent::setUp();
+        $this->start_url = 'http://google.com';
     }
 
     public function tearDown()
@@ -65,4 +51,20 @@ class AndroidChromeTest extends Sauce\Sausage\MobileTestCase
         $this->googleSearch('Sauce Labs'); 
         $this->assertContains("Sauce", $this->title());
     }
+    
+    public function elemsByTag($tag)
+    {
+        return $this->elements($this->using('tag name')->value($tag));
+    }
+    
+    public function elemsByName($tag)
+    {
+        return $this->elements($this->using('name')->value($tag));
+    }
+    
+    public function elemsById($tag)
+    {
+        return $this->elements($this->using('id')->value($tag));
+    }
+
 }

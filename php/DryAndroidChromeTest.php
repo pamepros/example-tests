@@ -12,7 +12,7 @@ class AndroidChromeTest extends Sauce\Sausage\MobileTestCase
         array(
             'browserName' => 'Chrome',
             'local' => true,
-            'port' => 4723,
+            'port' => 4723, // puerto por defecto de appium
             'desiredCapabilities' => array(
                 'platformName' => 'Android',
                 'platformVersion' => '4.4',
@@ -21,21 +21,7 @@ class AndroidChromeTest extends Sauce\Sausage\MobileTestCase
         )
     );
 
-    public function elemsByTag($tag)
-    {
-        return $this->elements($this->using('tag name')->value($tag));
-    }
     
-    public function elemsByName($tag)
-    {
-        return $this->elements($this->using('name')->value($tag));
-    }
-    
-    public function elemsById($tag)
-    {
-        return $this->elements($this->using('id')->value($tag));
-    }
-
     public function testSauce()
     {
         $this->url('http://google.com');
@@ -61,4 +47,20 @@ class AndroidChromeTest extends Sauce\Sausage\MobileTestCase
         
         $this->assertContains("Sauce", $this->title());
     }
+    
+    public function elemsByTag($tag)
+    {
+        return $this->elements($this->using('tag name')->value($tag));
+    }
+    
+    public function elemsByName($tag)
+    {
+        return $this->elements($this->using('name')->value($tag));
+    }
+    
+    public function elemsById($tag)
+    {
+        return $this->elements($this->using('id')->value($tag));
+    }
+
 }
